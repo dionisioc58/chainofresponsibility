@@ -29,6 +29,7 @@ public class ATMDispenseChain {
 				return;
 			}
 			atmDispenser.c1.dispense(new Currency(amount));
+			System.out.println("Entrega encerrada!");
 		}
 
 	}
