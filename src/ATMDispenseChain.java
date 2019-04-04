@@ -1,37 +1,21 @@
-import java.util.Scanner;
-
 public class ATMDispenseChain {
-
-	private DispenseChain c1;
+	
+	private DispenseChain dc1;
+	private DispenseChain dc2;
+	private DispenseChain dc3;
 
 	public ATMDispenseChain() {
 		// initialize the chain
-		this.c1 = new Dollar50Dispenser();
-		DispenseChain c2 = new Dollar20Dispenser();
-		DispenseChain c3 = new Dollar10Dispenser();
+		dc1 = new Dollar50Dispenser();
+		dc2 = new Dollar20Dispenser();
+		dc3 = new Dollar10Dispenser();
 
 		// set the chain of responsibility
-		c1.setNextChain(c2);
-		c2.setNextChain(c3);
+		dc1.setNextChain(dc2);
+		dc2.setNextChain(dc3);
 	}
 
-	public static void main(String[] args) {
-		ATMDispenseChain atmDispenser = new ATMDispenseChain();
-		while (true) {
-			int amount = 0;
-			System.out.println("Quanto dinheiro você quer:");
-			@SuppressWarnings("resource")
-			Scanner input = new Scanner(System.in);
-			amount = input.nextInt();
-			if (amount % 10 != 0) {
-				System.out.println("A quantidade deve ser múltipla de 10.");
-				input.close();
-				return;
-			}
-			atmDispenser.c1.dispense(new Currency(amount));
-			System.out.println("Entrega encerrada!");
-		}
-
+	public DispenseChain getDc1() {
+		return dc1;
 	}
-
 }
