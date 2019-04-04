@@ -3,8 +3,19 @@
 public class Teste {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		BancoChain bancos = new BancoA();
+	    bancos.setNext(new BancoB());
+	    bancos.setNext(new BancoC());
+	    bancos.setNext(new BancoD());
+	     
+	    try {
+	        bancos.efetuarPagamento(IDBancos.bancoC);
+	        bancos.efetuarPagamento(IDBancos.bancoA);
+	        bancos.efetuarPagamento(IDBancos.bancoD);
+	        bancos.efetuarPagamento(IDBancos.bancoB);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
 
 }
