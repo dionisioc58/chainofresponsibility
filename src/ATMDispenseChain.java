@@ -19,17 +19,16 @@ public class ATMDispenseChain {
 		ATMDispenseChain atmDispenser = new ATMDispenseChain();
 		while (true) {
 			int amount = 0;
-			System.out.println("Enter amount to dispense");
+			System.out.println("Quanto dinheiro você quer:");
+			@SuppressWarnings("resource")
 			Scanner input = new Scanner(System.in);
 			amount = input.nextInt();
 			if (amount % 10 != 0) {
-				System.out.println("Amount should be in multiple of 10s.");
+				System.out.println("A quantidade deve ser múltipla de 10.");
 				input.close();
 				return;
 			}
-			// process the request
 			atmDispenser.c1.dispense(new Currency(amount));
-			input.close();
 		}
 
 	}
